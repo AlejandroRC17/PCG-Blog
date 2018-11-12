@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}
+    Agregar
+{% endblock %}
+
+{% block page_content %}
+
+		{% for message in get_flashed_messages() %}
+            <div class="alert alert-warning">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ message }}
+            </div>
+        {% endfor %}
+    <h1 align="center">Agregar registro</h1>   
+    <br> 
+    <form class="col-xs-4" method="POST">
+    {{ form.csrf_token }}
+ 	{{ wtf.form_field(form.cliente) }}
+ 	{{ wtf.form_field(form.producto) }}
+    {{ wtf.form_field(form.cantidad) }}
+    <input class="btn btn-primary" type="submit" value="Agregar">
+</form>
+</div>
+</div>
+<br><br>
+{% endblock %}

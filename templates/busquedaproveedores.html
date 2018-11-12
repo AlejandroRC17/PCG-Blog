@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}
+    Buscar proveedores
+{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1 align="center">Buscar proveedor</h1>
+        <form method="POST">
+    {{ form.csrf_token }}
+     {{ wtf.form_field(form.campocliente) }}
+      <input class="btn btn-primary" type="submit" value="Buscar">
+  </form>
+  <br>
+    <u1>
+    {% for x in clientes %}
+    <div class="list-group">
+      <button type="button" class="list-group-item list-group-item-success"><a href="/busquedaproveedores/{{ x }}">{{ x }}</a></button>
+    {% endfor %}
+    </u1>
+</div>
+
+<div class="panel panel-primary">
+  <!-- Default panel contents -->
+  <div class="panel-heading"></div>
+  <!-- Table -->
+      <style>
+      .alerta { color: red;
+                font-weight: bold; }
+    </style>
+
+  <table class="table">
+    <tr>
+        <td><b>Proveedor</b></td>
+        <td><b>Producto</b></td>
+        <td><b>Cantidad</b></td>
+        <td><b>Codigo</b></td>
+    </tr>
+        {% for item in listar %}
+    <tr>
+        {% if item.cantidad <= 5.00 %}
+        <td class="alerta">{{ item.cliente }}</td>
+        <td class="alerta">{{ item.producto }}</td>
+        <td class="alerta">{{ item.cantidad }}</td>
+        <td class="alerta">{{ item.codigo }}</td>
+        {% else %}
+        <td>{{ item.cliente }}</td>
+        <td>{{ item.producto }}</td>
+        <td>{{ item.cantidad }}</td>
+        <td>{{ item.codigo }}</td>
+        {% endif %}
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+
+    <center>
+      <a href="/descargaconsulta" class="btn btn-primary">Descarga consulta</a>
+</center>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}
+	Inicio
+{% endblock %}
+
+{% block page_content %}
+	<div class="container">
+		<h1 align="center">"Los Clavos"</h1>
+		<style>
+			h1{font-size: 4em}
+		</style>
+		<p> 
+			<p id = "tex" >Que desea hacer?</p>
+			<style>
+				#tex{font-size: 2em}
+			</style>
+			<div class="list-group">
+				<a href="/busquedaproveedores" class="list-group-item list-group-item-success">Buscar proveedor</a>
+				<a href="/busquedaproductos" class="list-group-item list-group-item-success">Buscar productos</a>
+ 				<a href="/stock" class="list-group-item list-group-item-success">Listado de stock</a>
+ 				<a href="/agregar_registro" class="list-group-item list-group-item-success">Agregar nuevo registro</a>
+ 		</p>
+ 	</div>
+<!--</div>!-->
+{% endblock %}

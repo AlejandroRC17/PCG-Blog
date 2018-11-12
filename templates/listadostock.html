@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Listado{% endblock %}
+
+{% block page_content %}
+<div class="page-header">   
+  <h1>Lista de Stock</h1> 
+</div>
+
+<div class="panel panel-primary">
+  <!-- Default panel contents -->
+  <div class="panel-heading"></div>
+ 
+  <!-- Table -->
+  <table class="table">
+    <tr>
+      <td><b>Codigo</b></td>
+      <td><b>Proveedor</b></td>
+      <td><b>Producto</b></td>
+      <td><b>Cantidad p/caja</b></td>
+
+    </tr>
+
+    <style>
+      .alerta { color: red;
+                font-weight: bold; }
+    </style>
+
+
+    {% for item in body %}
+    <tr>
+    	{% if item[3] == "5.00" or item[3] == "4.00" or item[3] == "3.00" or item[3] == "2.00" or item[3] == "1.00" or item[3] == "0.00" %}
+        <td class="alerta">{{ item[0] }}</td>
+        <td class="alerta"><font style="text-transform: uppercase;">{{ item[1] }}</font></td>
+        <td class="alerta"><font style="text-transform: uppercase;">{{ item[2] }}</font></td>
+        <td class="alerta">{{ item[3] }}</td>
+        {% else %}
+        <td>{{ item[0] }}</td>
+        <td><font style="text-transform: uppercase;">{{ item[1] }}</font></td>
+        <td><font style="text-transform: uppercase;">{{ item[2] }}</font></td>
+        <td>{{ item[3] }}</td>
+        {% endif %}
+    </tr>
+    {% endfor %}
+    
+  </table>
+</div>
+
+{% endblock %}
+
